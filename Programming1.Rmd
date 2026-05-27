@@ -1,0 +1,574 @@
+---
+title: "Into the programing"
+author: "Tio"
+date: "2026-05-20"
+output:
+  pdf_document: default
+  html_document: default
+---
+##setup chunck
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+```{r}
+
+```
+
+```{r workshop-1}
+getwd() #my working directory
+#------------------------------------#
+# MB5370: Introduction to Programming
+# Agustinus Satrio Supoyo
+# May 2026
+# Workshop 1 - Introduction to R
+# This script contains basic R programming concepts:
+# - Calculations
+# - Variables and Assignment
+# - Functions
+# - Data Types
+# - Data Structures
+# - Data Frames and Tibbles
+# - Packages
+#------------------------------------#
+
+
+#====================================#
+# 1. Basic Calculations
+#====================================#
+
+2 + 1
+1:30
+6 * 2
+
+
+#====================================#
+# 2. Variables and Assignment
+#====================================#
+
+age <- 25
+first_name <- "Bill"
+
+age + 1
+age + age
+
+# R is case-sensitive
+Age <- 41   # Different from 'age'
+
+# Variables with spaces using backticks
+`age bob` <- 25
+
+
+#====================================#
+# 3. Exercise 1 - Basic Calculations
+#====================================#
+
+15 + 25.1 + 20.25
+
+total <- 15 + 25.1 + 20.25
+Number2 <- 10
+
+total + Number2
+
+final_result <- total + Number2
+
+second_number <- 15 + 23 + 22
+total + second_number
+
+
+#====================================#
+# 4. Rounding Functions
+#====================================#
+
+years_old <- 25.7
+
+round(years_old)   # Round to nearest whole number
+floor(years_old)   # Round down
+
+# Specify decimal places
+years_old <- 25.765
+round(years_old, 2)
+
+# Help and arguments
+?round
+args(round)
+
+
+#====================================#
+# 5. Using paste() to Create Sentences
+#====================================#
+
+name <- "Agustinus"
+age <- 27.5
+
+sentence <- paste(name, "is", age, "years old.")
+print(sentence)
+
+
+#====================================#
+# 6. Understanding Variable Updates
+#====================================#
+
+grade <- 55
+total <- grade + 10
+print(total)
+
+grade <- 90
+print(total)       # Still uses old value
+
+total <- grade + 10
+print(total)       # Updated value
+
+
+#====================================#
+# 7. Simple Multiplication Example
+#====================================#
+
+p <- 2
+z <- 5
+
+out <- p * z
+print(out)
+
+
+#====================================#
+# 8. Data Type Testing
+#====================================#
+
+x <- 1
+
+is.character(x)
+is.numeric(x)
+
+
+#====================================#
+# 9. Debugging Example
+#====================================#
+
+my_quiz <- c(
+  "uno",
+  "dos",
+  "tres",
+  "cuatro",
+  "cinco"
+)
+
+print(my_quiz)
+str(my_quiz)
+length(my_quiz)
+
+
+#====================================#
+# 10. Data Types
+#====================================#
+
+# Character (text)
+my_character_variable <- "Agustinus"
+class(my_character_variable)
+
+# Numeric (decimal numbers)
+my_numeric_variable <- 4.2
+class(my_numeric_variable)
+
+# Integer
+my_integer_variable <- 10L
+class(my_integer_variable)
+
+# Logical (TRUE/FALSE)
+my_logical_variable <- TRUE
+class(my_logical_variable)
+
+
+#====================================#
+# 11. Data Structures
+#====================================#
+
+# List
+list("uno", "dos", "tres")
+
+# Numeric vector
+y <- c(1, 2, 3)
+
+# Character vector
+z <- c("Sarah", "Tracy", "Jon")
+
+# Check class
+class(y)
+class(z)
+
+# Mixed-type list
+x <- list(1, "a", TRUE)
+
+# Access elements
+x[[1]]
+x[[2]]
+x[[3]]
+
+
+#====================================#
+# 12. Data Frames
+#====================================#
+
+my_dataframe <- data.frame(
+  no = c(1, 2, 3),
+  name = c("Tracey", "John", "Pete"),
+  passed = c(TRUE, FALSE, TRUE)
+)
+
+# View data frame
+my_dataframe
+
+# Inspect structure
+str(my_dataframe)
+
+# Convert column type
+my_dataframe$no <- as.factor(my_dataframe$no)
+
+# Check updated structure
+str(my_dataframe)
+
+
+#====================================#
+# 13. Missing Data (NA)
+#====================================#
+
+height <- c(170, NA, 180)
+
+# Check missing values
+is.na(height)
+
+# Remove missing values
+na.omit(height)
+
+
+#====================================#
+# 14. Importing Data
+#====================================#
+
+# Read CSV files
+#read.csv()
+
+# Read Excel files
+#readxl::read_excel()
+
+
+#====================================#
+# 15. Tibbles
+#====================================#
+
+library(tibble)
+
+my_tibble <- tibble(
+  no = c(1, 2, 3),
+  name = c("Tracy", "John", "Pete"),
+  passed = c(TRUE, FALSE, TRUE)
+)
+
+# View tibble
+my_tibble
+
+
+#====================================#
+# 16. Installing and Loading Packages
+#====================================#
+
+# Install packages (run only once)
+#install.packages("tidyverse")
+
+# Load packages (run every session)
+#library(tidyverse)
+
+# Install multiple packages
+# install.packages(c("ggplot2", "tidyr", "dplyr", "terra"))
+
+# Open help for a function
+?ggplot
+
+
+#====================================#
+# 17. Recommended Script Structure
+#====================================#
+
+# 1. Import data
+# 2. Clean data
+# 3. Analyse data
+# 4. Plot results
+# 5. Save outputs
+
+
+#====================================#
+# 18. Example Workflow for Data Analysis
+#====================================#
+
+# 1. Read the .csv file into R
+# 2. Inspect the data structure
+# 3. Filter the target species
+# 4. Summarise abundance
+# 5. Create the plot
+# 6. Save the figure
+
+```
+##Load Packages##
+```{r packages}
+library(tidyverse)
+```
+##ggplot
+#| Geom               | Purpose      |
+#| `geom_point()`     | Scatter plot |
+#| `geom_line()`      | Line chart   |
+#| `geom_bar()`       | Bar chart    |
+#| `geom_boxplot()`   | Boxplot      |
+#| `geom_histogram()` | Histogram    |
+#| `geom_smooth()`    | Trend line   |
+
+```{r}
+mpg
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+#Aesthetic mappings
+```{r}
+ aes() #used to connect variable to visual element
+#Element visual example
+#color 
+#size  
+#shape 
+#alpha
+#linetype 
+#group
+```
+
+```{r}
+#to change the color based on class category
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, colour = class))
+```
+
+```{r}
+#give the fix color
+ggplot(data=mpg)+
+  geom_point(mapping=aes(x=displ,y=hwy),colour="blue")
+```
+
+```{r}
+#Change point size by class
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, size = class))
+```
+
+```{r}
+##Change point shape by class.
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, shape = class))
+```
+
+```{r}
+#transparancy (alpha)
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
+```
+```{r}
+#
+ggplot(data = mpg) +
+  geom_point( mapping = aes( x = displ,y = hwy,colour = displ < 5))
+```
+
+#Troubleshooting
+```{r}
+ggplot(data = mpg)+ 
+ geom_point(mapping = aes(x = displ, y = hwy)) 
+# the + should be on top line
+```
+
+```{r}
+ggplot(data = mpg)+
+ geom_point(mapping = aes(x = displ, y = hwy)) 
+```
+
+#Facet (Panel Plot)
+```{r}
+#face wrap
+ggplot(data = mpg) +
+  geom_point(aes(x = displ, y = hwy)) +
+  facet_wrap(~ class, nrow = 2)
+```
+```{r}
+#Face grid
+ggplot(data = mpg) +
+  geom_point(aes(x = displ, y = hwy)) +
+  facet_grid(drv ~ cyl)
+```
+```{r}
+#to add smooth line
+ggplot(data=mpg)+
+  geom_smooth(mapping=aes(x=displ,y=hwy))
+```
+
+```{r}
+#to add the line and point together
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + # points horrible 
+  geom_smooth(mapping = aes(x = displ, y = hwy)) # try smooth line
+```
+```{r}
+#to change the line type
+ggplot(data = mpg) + 
+  geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
+```
+```{r}
+#Grouping Data with group
+ggplot(data = mpg) +
+  geom_smooth(mapping = aes(x = displ, y = hwy, group = drv))
+```
+
+```{r}
+#Changing Line Color by Group
+ggplot(data = mpg) +
+  geom_smooth(
+    mapping = aes(x = displ, y = hwy, colour = drv),
+    show.legend = FALSE
+  )
+```
+
+```{r}
+#Combining Multiple Geoms
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  geom_smooth(mapping = aes(x = displ, y = hwy))
+```
+```{r}
+#Using Global Mappings
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+  geom_point() +
+  geom_smooth() #to avoid repeating the same aes()
+
+```
+
+```{r}
+#Layer-Specific Mappings
+ ggplot(data = mpg) +
+  geom_smooth(mapping = aes(x = displ, y = hwy, group = drv))
+
+ggplot(data = mpg) +
+  geom_smooth(
+    mapping = aes(x = displ, y = hwy, colour = drv),
+    show.legend = FALSE,
+  )
+
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  geom_smooth(mapping = aes(x = displ, y = hwy))
+
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  geom_smooth()
+
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point(mapping = aes(colour = class)) + 
+  geom_smooth()
+
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point(mapping = aes(colour = class)) + 
+  geom_smooth(data = filter(mpg, class == "subcompact"), se = FALSE)
+
+
+#Code 1 — Global Mapping
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  geom_smooth()
+#Code 2 — Local Mapping
+ggplot() + 
+  geom_point(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_smooth(data = mpg, mapping = aes(x = displ, y = hwy))
+
+
+
+```
+
+##Plotting Statistics
+```{r}
+#create the bar chart
+ggplot(data = diamonds) +
+  geom_bar(aes(x = cut))
+```
+
+```{r}
+ggplot(data = diamonds) +
+  stat_count(aes(x = cut)) #the same way
+```
+##Overriding defaults in ggplot2
+```{r}
+demo <- tribble(
+  ~cut,         ~freq,
+  "Fair",       1610,
+  "Good",       4906,
+  "Very Good",  12082,
+  "Premium",    13791,
+  "Ideal",      21551
+)
+demo
+
+ggplot(data = demo) +
+  geom_bar(mapping = aes(x = cut, y = freq), stat = "identity")
+```
+
+```{r}
+#override a default mapping from transformed variables to aesthetics
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, y = stat(prop), group = 1))
+#> Warning: `stat(prop)` was deprecated in ggplot2 3.4.0.
+
+
+```
+##Plotting statistical details
+```{r}
+#You can do this using stat_summary().
+ggplot(data = diamonds) + 
+  stat_summary(
+    mapping = aes(x = cut, y = depth),
+    fun.min = min,
+    fun.max = max,
+    fun = median
+  )
+
+```
+```{r}
+#aethetic adjustment fill and color
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, colour = cut))
+
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = cut))
+
+#to add the clarity
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = clarity))
+
+
+#To alter transparency (alpha)
+ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) + 
+  geom_bar(alpha = 1/5, position = "identity")
+
+#To color the bar outlines with no fill color
+ggplot(data = diamonds, mapping = aes(x = cut, colour = clarity)) + 
+  geom_bar(fill = NA, position = "identity")
+#position = "fill" works like stacking, but scales each bar, so that all bars have the same total height (100%).
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = clarity), position = "fill")
+
+#position = "dodge" places overlapping objects directly beside one another.
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = clarity), position = "dodge")
+
+#position = "jitter" adds a small amount of random noise to each point to avoid overplotting when points overlap. This is useful for scatterplots but not barplots.
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
+
+
+
+
+
+```
+
