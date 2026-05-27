@@ -3,8 +3,8 @@ title: "Into the programing"
 author: "Tio"
 date: "2026-05-20"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 ##setup chunck
 ```{r setup, include=FALSE}
